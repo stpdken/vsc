@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#526B55">
+<meta name="description" content="Learn how inclusive and accessible technology creates equal opportunities in the workplace.">
+<title>InclusiveTech | Accessible Technology in the Workplace</title>
+
+<style>
+:root {
+  --sage: #526B55;
+  --dark-sage: #354A38;
+  --light-sage: #E5EBDD;
+  --cream: #F5F0E6;
+  --white: #FFFFFF;
+  --text: #29352C;
+  --muted: #626D63;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.7;
+}
+
+img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+a {
+  color: inherit;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.97);
+  border-bottom: 3px solid var(--sage);
+  box-shadow: 0 3px 12px rgba(40,60,40,0.08);
+}
+
+.navbar {
+  max-width: 1200px;
+  margin: auto;
+  padding: 14px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 18px;
+}
+
+.logo {
+  color: var(--sage);
+  font-family: Georgia, serif;
+  font-size: 25px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.logo small {
+  display: block;
+  font: 11px Arial, sans-serif;
+  color: var(--muted);
+  letter-spacing: 0.5px;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 7px;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text);
+  font-size: 12px;
+  font-weight: bold;
+  padding: 8px 10px;
+  border-radius: 20px;
+}
+
+nav a:hover,
+nav a:focus {
+  background: var(--light-sage);
+  color: var(--dark-sage);
+}
+
+.hero {
+  max-width: 1200px;
+  min-height: 330px;
+  margin: 24px auto 35px;
+  padding: 50px;
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  background:
+    linear-gradient(90deg, rgba(45,68,49,.94),
+    rgba(45,68,49,.76) 48%, rgba(45,68,49,.08)),
+    url("https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1800&q=85")
+    center/cover;
+  color: white;
+}
+
+.hero-content {
+  max-width: 610px;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.hero h1 {
+  font-family: Georgia, serif;
+  font-size: clamp(32px, 5vw, 51px);
+  line-height: 1.12;
+  margin-bottom: 18px;
+}
+
+.hero p {
+  font-size: 16px;
+  max-width: 530px;
+}
+
+.hero-button {
+  display: inline-block;
+  margin-top: 22px;
+  padding: 11px 22px;
+  border-radius: 25px;
+  background: white;
+  color: var(--dark-sage);
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.hero-button:hover {
+  background: var(--light-sage);
+}
+
+.intro {
+  max-width: 900px;
+  margin: 0 auto 30px;
+  padding: 0 22px;
+  text-align: center;
+}
+
+.intro h2 {
+  color: var(--sage);
+  font-family: Georgia, serif;
+  font-size: clamp(26px, 4vw, 36px);
+  margin-bottom: 8px;
+}
+
+.intro p {
+  color: var(--muted);
+}
+
+.topics {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 22px 40px;
+}
+
+.topic-card {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.9fr) minmax(0, 1.5fr);
+  gap: 26px;
+  align-items: center;
+  background: white;
+  padding: 20px;
+  margin-bottom: 22px;
+  border-radius: 18px;
+  box-shadow: 0 5px 18px rgba(45,65,45,0.07);
+  scroll-margin-top: 100px;
+}
+
+.topic-card:nth-child(even) {
+  grid-template-columns: minmax(0, 1.5fr) minmax(220px, 0.9fr);
+}
+
+.topic-card:nth-child(even) .topic-image {
+  order: 2;
+}
+
+.topic-image {
+  height: 290px;
+  border-radius: 13px;
+  background: var(--light-sage);
+}
+
+.topic-content {
+  padding: 5px 8px;
+}
+
+.topic-number {
+  display: inline-block;
+  background: var(--sage);
+  color: white;
+  padding: 5px 13px;
+  border-radius: 9px;
+  font-size: 13px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
+
+.topic-label {
+  color: var(--sage);
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.topic-content h2 {
+  color: var(--dark-sage);
+  font-family: Georgia, serif;
+  font-size: clamp(25px, 3vw, 32px);
+  line-height: 1.25;
+  margin-bottom: 14px;
+}
+
+.topic-content p {
+  margin-bottom: 13px;
+  font-size: 15px;
+}
+
+.topic-content h3 {
+  color: var(--sage);
+  font-size: 16px;
+  margin: 17px 0 5px;
+}
+
+.topic-content ul {
+  padding-left: 22px;
+  margin-bottom: 12px;
+}
+
+.topic-content li {
+  margin-bottom: 4px;
+}
+
+.key-idea {
+  margin-top: 17px;
+  background: var(--light-sage);
+  border-left: 4px solid var(--sage);
+  padding: 14px 17px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.key-idea strong {
+  color: var(--dark-sage);
+}
+
+.back-top {
+  display: inline-block;
+  margin-top: 10px;
+  color: var(--sage);
+  font-weight: bold;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+footer {
+  background: var(--dark-sage);
+  color: white;
+  text-align: center;
+  padding: 38px 20px;
+}
+
+footer h2 {
+  font-family: Georgia, serif;
+  font-size: 30px;
+  margin-bottom: 7px;
+}
+
+footer p {
+  margin: 5px auto;
+  max-width: 650px;
+  font-size: 14px;
+}
+
+.footer-note {
+  color: #DCE6D7;
+  margin-top: 18px;
+  font-size: 12px;
+}
+
+@media (max-width: 760px) {
+  .navbar {
+    flex-direction: column;
+    padding: 14px 12px;
+  }
+
+  nav {
+    gap: 3px;
+  }
+
+  nav a {
+    font-size: 11px;
+    padding: 7px 8px;
+  }
+
+  .hero {
+    margin: 16px 12px 28px;
+    padding: 32px 23px;
+    min-height: 340px;
+    background-position: center;
+  }
+
+  .hero h1 {
+    font-size: 34px;
+  }
+
+  .hero p {
+    font-size: 14px;
+  }
+
+  .topics {
+    padding: 0 12px 28px;
+  }
+
+  .topic-card,
+  .topic-card:nth-child(even) {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 14px;
+    margin-bottom: 17px;
+  }
+
+  .topic-card:nth-child(even) .topic-image {
+    order: 0;
+  }
+
+  .topic-image {
+    height: 220px;
+  }
+
+  .topic-content {
+    padding: 4px;
+  }
+
+  .topic-content h2 {
+    font-size: 27px;
+  }
+
+  .topic-content p,
+  .topic-content li {
+    font-size: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto;
+  }
+}
+</style>
+</head>
+
+<body id="top">
+
+<header>
+  <div class="navbar">
+    <a class="logo" href="#top">
+      ♿ InclusiveTech
+      <small>Accessible Technology, Equal Opportunities</small>
+    </a>
+
+    <nav aria-label="Main navigation">
+      <a href="#top">Home</a>
+      <a href="#accessibility">Accessibility</a>
+      <a href="#assistive">Assistive Tech</a>
+      <a href="#inclusion">Digital Inclusion</a>
+      <a href="#equal-access">Equal Access</a>
+      <a href="#practices">Inclusive Practices</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section class="hero">
+  <div class="hero-content">
+    <p class="eyebrow">Technology for Everyone</p>
+    <h1>Inclusive Technology for a More Equal Workplace</h1>
+    <p>
+      Discover how accessible technology removes barriers,
+      supports independence, and creates opportunities for
+      everyone in the modern workplace.
+    </p>
+    <a class="hero-button" href="#introduction">Explore the Topics ↓</a>
+  </div>
+</section>
+
+<section class="intro" id="introduction">
+  <h2>Understanding Inclusive Technology</h2>
+  <p>
+    Inclusive technology helps people with different abilities
+    and backgrounds access digital tools, information, education,
+    and workplace opportunities. Explore six important topics
+    that help build a more accessible digital world.
+  </p>
+</section>
+
+<div class="topics">
+
+  <!-- TOPIC 1 -->
+  <article class="topic-card" id="accessibility">
+    <img class="topic-image"
+      src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1000&q=85"
+      alt="Electronic components representing computer technology"
+      loading="lazy">
+
+    <div class="topic-content">
+      <span class="topic-label">Topic 01</span>
+      <h2>Accessibility Features</h2>
+
+      <p>
+        Accessibility features are settings and functions in
+        computers, mobile devices, applications, and websites
+        that help people with different abilities use technology.
+        They make digital content easier to see, hear, understand,
+        and navigate.
+      </p>
+
+      <h3>Why It Is Important</h3>
+      <p>
+        These features reduce barriers and allow users to complete
+        tasks more independently. They can also make technology
+        more comfortable and convenient for everyone.
+      </p>
+
+      <h3>Examples</h3>
+      <ul>
+        <li>Text enlargement and screen magnification</li>
+        <li>High-contrast display and color adjustments</li>
+        <li>Voice control and speech recognition</li>
+        <li>Keyboard navigation and captions</li>
+      </ul>
+
+      <h3>Benefits</h3>
+      <ul>
+        <li>Improved usability</li>
+        <li>Greater independence</li>
+        <li>Easier access to digital information</li>
+      </ul>
+
+      <div class="key-idea">
+        <strong>Key Idea:</strong> Technology should be adaptable
+        to the different needs of its users.
+      </div>
+    </div>
+  </article>
+
+  <!-- TOPIC 2 -->
+  <article class="topic-card" id="assistive">
+    <img class="topic-image"
+      src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1000&q=85"
+      alt="Laptop and digital workspace representing assistive technology"
+      loading="lazy">
+
+    <div class="topic-content">
+      <span class="topic-label">Topic 02</span>
+      <h2>Assistive Technologies</h2>
+
+      <p>
+        Assistive technologies are devices, software, and equipment
+        that help people with disabilities perform activities,
+        communicate, learn, and work. These tools provide additional
+        ways to interact with computers and other digital devices.
+      </p>
+
+      <h3>Why It Is Important</h3>
+      <p>
+        Assistive technologies support independence and participation
+        in school, work, and everyday activities. They help users
+        overcome barriers that may prevent them from using standard
+        technology.
+      </p>
+
+      <h3>Examples</h3>
+      <ul>
+        <li>Screen readers that read text aloud</li>
+        <li>Speech-to-text software for dictation</li>
+        <li>Screen magnifiers for enlarged content</li>
+        <li>Alternative keyboards and adaptive switches</li>
+        <li>Hearing assistance and communication tools</li>
+      </ul>
+
+      <h3>Benefits</h3>
+      <ul>
+        <li>Supports communication</li>
+        <li>Encourages participation</li>
+        <li>Improves access to education and employment</li>
+      </ul>
+
+      <div class="key-idea">
+        <strong>Key Idea:</strong> Assistive tools help people
+        use technology in ways that meet their needs.
+      </div>
+    </div>
+  </article>
+
+  <!-- TOPIC 3 -->
+  <article class="topic-card" id="inclusion">
+    <img class="topic-image"
+      src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1000&q=85"
+      alt="Colleagues working together in a collaborative environment"
+      loading="lazy">
+
+    <div class="topic-content">
+      <span class="topic-label">Topic 03</span>
+      <h2>Digital Inclusion</h2>
+
+      <p>
+        Digital inclusion means ensuring that everyone has meaningful
+        opportunities to access and use digital technology. It includes
+        access to devices and the internet, digital skills, accessible
+        services, and support for people who face barriers to
+        participating in the digital world.
+      </p>
+
+      <h3>Why It Is Important</h3>
+      <p>
+        Many essential services, learning resources, and job
+        opportunities are now available online. Digital inclusion
+        helps people participate in society without being excluded
+        because of cost, location, disability, or limited experience.
+      </p>
+
+      <h3>Examples</h3>
+      <ul>
+        <li>Digital literacy training</li>
+        <li>Affordable internet and device access</li>
+        <li>Accessible online learning</li>
+        <li>Technology support for underserved communities</li>
+        <li>Inclusive digital government services</li>
+      </ul>
+
+      <h3>Benefits</h3>
+      <ul>
+        <li>More learning and job opportunities</li>
+        <li>Greater participation in society</li>
+        <li>Stronger and more connected communities</li>
+      </ul>
+
+      <div class="key-idea">
+        <strong>Key Idea:</strong> Everyone deserves an opportunity
+        to participate in the digital world.
+      </div>
+    </div>
+  </article>
+
+  <!-- TOPIC 4 -->
+  <article class="topic-card" id="accessible-website">
+    <img class="topic-image"
+      src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1000&q=85"
+      alt="Computer screen and digital workspace representing web design"
+      loading="lazy">
+
+    <div class="topic-content">
+      <span class="topic-label">Topic 04</span>
+      <h2>Accessible Website</h2>
+
+      <p>
+        An accessible website is designed so people with different
+        abilities can perceive, understand, navigate, and interact
+        with its content. It considers readable text, meaningful
+        image descriptions, keyboard navigation, clear headings,
+        and compatibility with assistive technologies.
+      </p>
+
+      <h3>Why It Is Important</h3>
+      <p>
+        An accessible website allows more people to find information
+        and use online services. It also improves the experience
+        for mobile users, older adults, and people using different
+        devices or internet connections.
+      </p>
+
+      <h3>Examples</h3>
+      <ul>
+        <li>Alternative text for meaningful images</li>
+        <li>Clear headings and descriptive links</li>
+        <li>Readable text and sufficient color contrast</li>
+        <li>Keyboard-friendly navigation</li>
+        <li>Captions and transcripts for media</li>
+      </ul>
+
+      <h3>Benefits</h3>
+      <ul>
+        <li>Better usability</li>
+        <li>Access for a wider audience</li>
+        <li>More inclusive online services</li>
+      </ul>
+
+      <div class="key-idea">
+        <strong>Key Idea:</strong> A website should be usable
+        by people with different abilities and technologies.
+      </div>
+    </div>
+  </article>
+
+  <!-- TOPIC 5 -->
+  <article class="topic-card" id="equal-access">
+    <img class="topic-image"
+      src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1000&q=85"
+      alt="Professional workplace with desks and computers"
+      loading="lazy">
+
+    <div class="topic-content">
+      <span class="topic-label">Topic 05</span>
+      <h2>Equal Access</h2>
+
+      <p>
+        Equal access means giving people fair opportunities to use
+        technology, digital information, online services, and
+        workplace resources. It involves identifying and removing
+        barriers that may prevent individuals from participating
+        fully.
+      </p>
+
+      <h3>Why It Is Important</h3>
+      <p>
+        Equal access helps create fairer learning and working
+        environments. People should be able to access important
+        information and opportunities without unnecessary
+        technology-related barriers.
+      </p>
+
+      <h3>Examples</h3>
+      <ul>
+        <li>Accessible job applications</li>
+        <li>Online training materials for all employees</li>
+        <li>Software compatible with assistive tools</li>
+        <li>Reasonable workplace accommodations</li>
+        <li>Accessible public information and services</li>
+      </ul>
+
+      <h3>Benefits</h3>
+      <ul>
+        <li>Fairer participation</li>
+        <li>More employment and learning opportunities</li>
+        <li>A more supportive workplace culture</li>
+      </ul>
+
+      <div class="key-idea">
+        <strong>Key Idea:</strong> Everyone deserves a fair chance
+        to access digital resources and participate.
+      </div>
+    </div>
+  </article>
+
+  <!-- TOPIC 6 -->
+  <article class="topic-card" id="practices">
+    <img class="topic-image"
+      src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1000&q=85"
+      alt="People collaborating with digital devices and documents"
+      loading="lazy">
+
+    <div class="topic-content">
+      <span class="topic-label">Topic 06</span>
+      <h2>Inclusive Digital Practices</h2>
+
+      <p>
+        Inclusive digital practices are methods used to create,
+        share, and manage digital content while considering the
+        diverse needs of users. They include accessible documents,
+        clear communication, inclusive collaboration, and regular
+        accessibility checks.
+      </p>
+
+      <h3>Why It Is Important</h3>
+      <p>
+        Planning for accessibility from the beginning helps prevent
+        exclusion and makes digital information easier to use.
+        Inclusive practices also encourage respect, participation,
+        and collaboration among people with different needs.
+      </p>
+
+      <h3>Examples</h3>
+      <ul>
+        <li>Add captions to videos and recorded meetings</li>
+        <li>Write clear and understandable content</li>
+        <li>Provide descriptions for meaningful images</li>
+        <li>Use headings and lists in documents</li>
+        <li>Check keyboard access and color contrast</li>
+      </ul>
+
+      <h3>Benefits</h3>
+      <ul>
+        <li>Better understanding of information</li>
+        <li>Stronger collaboration</li>
+        <li>More inclusive digital environments</li>
+      </ul>
+
+      <div class="key-idea">
+        <strong>Key Idea:</strong> Consider different users from
+        the beginning when creating digital content.
+      </div>
+    </div>
+  </article>
+
+</div>
+</main>
+
+<footer>
+  <h2>InclusiveTech</h2>
+  <p>Accessible Technology in the Workplace</p>
+  <p>
+    Building a more inclusive digital world through accessibility,
+    awareness, and equal opportunities.
+  </p>
+  <p class="footer-note">
+    © 2026 InclusiveTech | Educational Website Project
+  </p>
+  <p><a href="#top">↑ Back to Top</a></p>
+</footer>
+
+</body>
+</html>
